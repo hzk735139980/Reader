@@ -1,38 +1,75 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>NodeAuth</title>
 
-    <title>Action</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/main.css" rel="stylesheet">
   </head>
-  <body style="background-color: #ffc10745;">
-    <div style="font: 25px/35px 黑体;
-    padding-top: 10px;
-    text-align: center;"><%= bookname %></div>
-    <div style="
-    font-size: 19pt;
-    letter-spacing: 0.2em;
-    line-height: 150%;
-    padding-top: 15px;
-    width: 85%;
-    margin: auto;"><%- content %></div>
-    <div style="border-top: 1px dashed #866a16;
-    text-align: center;
-    margin: auto 20px;
-    padding: 15px;">
+
+  <body>
+    <div class="container">
+      <header class="masthead mb-auto d-flex w-100 p-3 mx-auto flex-column">
+        <div class="inner">
+          <h3 class="masthead-brand"><a href="/" style="text-decoration: none !important;">Reader</a></h3>
+          <!-- <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="/signup">Sign Up</a>
+            <a class="nav-link" href="/login">Login</a>
+          </nav> -->
+        </div>
+      </header>
+
+      <main>
+          <div class="readset">
+              <span class="setcolor padrig">选择背景颜色：<script type="text/javascript">                                                         document.write(ReadConfig.setting_style_bg_color);</script><em class="col_one   setting_style_bg_color" setting_style_bg_color="#fef0e1" title="黄橙"></em><em class="col_two   setting_style_bg_color" setting_style_bg_color="#feeaee" title="洋红"></em><em class="col_three setting_style_bg_color" setting_style_bg_color="#fdecfd" title="淡粉"></em><em class="col_four  setting_style_bg_color" setting_style_bg_color="#e9f4fc" title="水蓝"></em><em class="col_five  setting_style_bg_color now" setting_style_bg_color="#f3fdec" title="草绿"></em></span>
+              <span class="padrig">选择字体：<script type="text/javascript">                                              document.write(ReadConfig.setting_style_font_family);</script><em setting_style_font_family="宋体,仿宋_GB2312,仿宋" class="now setting_style_font_family">宋体</em><em setting_style_font_family="黑体" class="setting_style_font_family">黑体</em><em setting_style_font_family="微软雅黑" class="setting_style_font_family">微软雅黑</em><em setting_style_font_family="楷体_GB2312,楷体" class="setting_style_font_family">楷体</em></span>
+              <span class="padrig">选择字体大小：<script type="text/javascript">                                                document.write(ReadConfig.setting_style_font_size);</script><em id="fontsize1" setting_style_font_size="14px" class="setting_style_font_size">小</em><em id="fontsize2" setting_style_font_size="16px" class="now setting_style_font_size">中</em><em id="fontsize3" setting_style_font_size="20px" class="setting_style_font_size">大</em><em id="fontsize4" setting_style_font_size="24px" class="setting_style_font_size">特大</em></span>
+          </div>
+          <div class="bookname"><%= bookname %></div>
+          <div class="content"><%- content %></div>
+          <div class="dashline">
+            <a href="/prev">上一章</a>
+            <a href="/next">下一章</a>
+          </div>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+        </div>
+      </footer>
+
+  </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+
+
+<!-- <div class="container">
+    <div class="readset">
+        <span class="setcolor padrig">选择背景颜色：<script type="text/javascript">                                                         document.write(ReadConfig.setting_style_bg_color);</script><em class="col_one   setting_style_bg_color" setting_style_bg_color="#fef0e1" title="黄橙"></em><em class="col_two   setting_style_bg_color" setting_style_bg_color="#feeaee" title="洋红"></em><em class="col_three setting_style_bg_color" setting_style_bg_color="#fdecfd" title="淡粉"></em><em class="col_four  setting_style_bg_color" setting_style_bg_color="#e9f4fc" title="水蓝"></em><em class="col_five  setting_style_bg_color now" setting_style_bg_color="#f3fdec" title="草绿"></em></span>
+        <span class="padrig">选择字体：<script type="text/javascript">                                              document.write(ReadConfig.setting_style_font_family);</script><em setting_style_font_family="宋体,仿宋_GB2312,仿宋" class="now setting_style_font_family">宋体</em><em setting_style_font_family="黑体" class="setting_style_font_family">黑体</em><em setting_style_font_family="微软雅黑" class="setting_style_font_family">微软雅黑</em><em setting_style_font_family="楷体_GB2312,楷体" class="setting_style_font_family">楷体</em></span>
+        <span class="padrig">选择字体大小：<script type="text/javascript">                                                document.write(ReadConfig.setting_style_font_size);</script><em id="fontsize1" setting_style_font_size="14px" class="setting_style_font_size">小</em><em id="fontsize2" setting_style_font_size="16px" class="now setting_style_font_size">中</em><em id="fontsize3" setting_style_font_size="20px" class="setting_style_font_size">大</em><em id="fontsize4" setting_style_font_size="24px" class="setting_style_font_size">特大</em></span>
+    </div>
+    <div class="bookname"><%= bookname %></div>
+    <div class="content"><%- content %></div>
+    <div class="dashline">
       <a href="/prev">上一章</a>
       <a href="/next">下一章</a>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-  </body>
-</html>
+</div> -->
