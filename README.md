@@ -3,6 +3,8 @@
 # intro
 This is a chinese novel reader, and this only works with the books in https://www.uukanshu.com/ and http://www.biquge.com.tw/.
 
+demo：https://app-reader.herokuapp.com
+
 # Prep
 1. open the terminal run "npm install"
 1. run "npm start"
