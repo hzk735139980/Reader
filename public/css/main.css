@@ -27,7 +27,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: white;
+  /* background-color: white; */
 }
 
 body {
@@ -51,6 +51,7 @@ body {
  */
 .masthead {
   margin-bottom: 2rem;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
 }
 
 .masthead-brand {
@@ -186,3 +187,76 @@ body {
     margin: auto 20px;
     padding: 15px;
  }
+
+
+ /* readset */
+ .readset {
+  border: 1px solid #dec9a0;
+  border-radius: 3px;
+  background-color: #f8f0df;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+.readset .padrig {
+  padding-right: 75px;
+}
+
+.readset span {
+  color: #4b380e;
+  font-weight: bold;
+}
+
+.readset span em {
+  margin: 0 3px;
+  cursor: pointer;
+  color: #000;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.readset .setcolor em {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  vertical-align: middle;
+}
+
+.readset .setcolor .col_one {
+  border: 1px solid #fdc996;
+  background-color: #fdb;
+}
+
+.readset .setcolor .col_two {
+  border: 1px solid #fc8ba2;
+  background-color: #fab;
+}
+
+.readset .setcolor .col_three {
+  border: 1px solid #fe91fe;
+  background-color: #faf;
+}
+
+.readset .setcolor .col_four {
+  border: 1px solid #86cdfd;
+  background-color: #adf;
+}
+
+.readset .setcolor .col_five {
+  border: 1px solid #9ae767;
+  background-color: #cfa;
+}
+
+@media (max-width: 768px){
+  body{
+    background-color: #f3fdec;
+    font-size: 12px;
+  }
+  .readset{
+    display: none !important;
+  }
+  .content{
+    font-size: 18px;
+  }
+}

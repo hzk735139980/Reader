@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 const biquge = require('../config/url').biquge;
 const uu = require('../config/url').uu;
+const situ = require('../config/url').situ;
 
 module.exports = app => {
     app.get('/', (req, res) => res.render('index'));
@@ -15,7 +16,7 @@ module.exports = app => {
             // console.log('error:', error); // Print the error if one occurred
             // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             var html = iconv.decode(body, 'gbk');
-            const $ = cheerio.load(html, {decodeEntities: false});
+            var $ = cheerio.load(html, {decodeEntities: false});
             var bookname = "";
             var content = "";
             if(prefix[0].includes(biquge)){
@@ -29,6 +30,13 @@ module.exports = app => {
                 content = $('#contentbox').html();
                 prev = uu + $('#prev').attr('href');
                 next = uu + $('#next').attr('href');
+            }
+            if(prefix[0].includes(situ)){
+                $ = cheerio.load(body);
+                bookname = $('.bookbox').children('h1').text();
+                content = $('#BookContent').html();
+                prev = situ + $('#webPage').children('a')[1].attribs.href;
+                next = situ + $('#webPage').children('a')[10].attribs.href;
             }
 
             res.render('action', {bookname: bookname, content: content});
@@ -41,7 +49,7 @@ module.exports = app => {
             // console.log('error:', error); // Print the error if one occurred
             // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             var html = iconv.decode(body, 'gbk');
-            const $ = cheerio.load(html, {decodeEntities: false});
+            var $ = cheerio.load(html, {decodeEntities: false});
             var bookname = "";
             var content = "";
             if(prefix[0].includes(biquge)){
@@ -55,6 +63,13 @@ module.exports = app => {
                 content = $('#contentbox').html();
                 prev = uu + $('#prev').attr('href');
                 next = uu + $('#next').attr('href');
+            }
+            if(prefix[0].includes(situ)){
+                $ = cheerio.load(body);
+                bookname = $('.bookbox').children('h1').text();
+                content = $('#BookContent').html();
+                prev = situ + $('#webPage').children('a')[1].attribs.href;
+                next = situ + $('#webPage').children('a')[10].attribs.href;
             }
             res.render('action', {bookname: bookname, content: content});
         });
@@ -66,7 +81,7 @@ module.exports = app => {
             // console.log('error:', error); // Print the error if one occurred
             // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             var html = iconv.decode(body, 'gbk');
-            const $ = cheerio.load(html, {decodeEntities: false});
+            var $ = cheerio.load(html, {decodeEntities: false});
             var bookname = "";
             var content = "";
             if(prefix[0].includes(biquge)){
@@ -80,6 +95,13 @@ module.exports = app => {
                 content = $('#contentbox').html();
                 prev = uu + $('#prev').attr('href');
                 next = uu + $('#next').attr('href');
+            }
+            if(prefix[0].includes(situ)){
+                $ = cheerio.load(body);
+                bookname = $('.bookbox').children('h1').text();
+                content = $('#BookContent').html();
+                prev = situ + $('#webPage').children('a')[1].attribs.href;
+                next = situ + $('#webPage').children('a')[10].attribs.href;
             }
             res.render('action', {bookname: bookname, content: content});
         });

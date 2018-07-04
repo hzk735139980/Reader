@@ -1,5 +1,6 @@
 // these urls are allos to fetch
 module.exports = {
     biquge: "http://www.biquge.com.tw",
-    uu: "https://www.uukanshu.com"
+    uu: "https://www.uukanshu.com",
+    situ: "https://www.sto.cc"
 }
