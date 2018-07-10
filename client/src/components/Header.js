@@ -32,7 +32,7 @@ class Header extends Component {
 
     render(){
         return(
-            <header className="p-3 d-flex bd-highlight">
+            <header className="p-3 d-flex bd-highlight bg-light shadow-sm">
                 <h3 className="masthead-brand mr-auto">Reader</h3>
                 {this.renderLink()}
             </header>

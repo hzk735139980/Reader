@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, FETCH_CONTENT, CONTENT_ERROR } from './types';
 
 export const fetchuser = () => {
     // axios.get('/api/current_user', { headers: {'authorization': localStorage.getItem('token')} })
@@ -40,4 +40,15 @@ export const signin = (formProps, callback) =>  dispatch => {
 export const signout = () => {
     localStorage.removeItem('token');
     return { type: AUTH_USER, payload: '' };
+}
+
+export const fetchcontent = (urlProps, callback) => dispatch => {
+    axios.post('/api/getcontent', urlProps)
+    .then(function(res){
+        dispatch({ type: FETCH_CONTENT, payload: res.data });
+        callback();
+    })
+    .catch(function(error){
+        dispatch({ type: CONTENT_ERROR, payload: error.response.data.error });
+    })
 }

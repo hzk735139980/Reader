@@ -7,7 +7,8 @@ import Header from './Header';
 import Signup from './auth/Signup';
 import Profile from './Profile';
 import Signin from './auth/Signin';
-const Landing = () => <h1>landing</h1>;
+import Landing from './Landing';
+import Content from './Content';
 
 class App extends Component {
     componentDidMount(){
@@ -17,12 +18,13 @@ class App extends Component {
     render(){
         return(
             <BrowserRouter>
-                <div className="container d-flex flex-column" style={{ height: '100vh'}}>
+                <div style={{ height: '100vh' }}>
                     <Header />
                     <Route exact path='/' component={Landing} />
                     <Route exact path='/signup' component={Signup} />
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/signin' component={Signin} />
+                    <Route exact path='/content' component={Content} />
                 </div>
             </BrowserRouter>
         );
