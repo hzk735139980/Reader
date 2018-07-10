@@ -8,7 +8,10 @@ const keys = require('./config/keys');
 
 //DB Setup
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+require('./models/User');
 
+//passport
+require('./services/passport');
 // app.set('view engine', 'ejs');
 
 app.use(morgan('combined'));
@@ -17,6 +20,8 @@ app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/indexRoute')(app);
 require('./routes/authRoute')(app);
+require('./routes/userRoute')(app);
+
 
 if(process.env.NODE_ENV === 'production'){
     // Express will serve up production assets
