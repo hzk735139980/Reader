@@ -9,6 +9,7 @@ const keys = require('./config/keys');
 //DB Setup
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 require('./models/User');
+require('./models/Bookmark');
 
 //passport
 require('./services/passport');
