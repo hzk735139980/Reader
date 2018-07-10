@@ -44,7 +44,7 @@ module.exports = (app) => {
     });
 
     //update user bookmark
-    app.post('/api/bookmark/update', requireAuth, function(req, res){
+    app.post('/api/bookmark/update:id', requireAuth, function(req, res){
         const id = req.body.id;
         const bookurl = req.body.bookurl;
         const description = req.body.description;
