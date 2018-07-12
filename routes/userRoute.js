@@ -23,6 +23,7 @@ module.exports = (app) => {
         const bookmark = new Bookmark({
             bookurl: bookurl,
             description: description,
+            saveDate: createDate(),
             _user: req.user._id
         });
 
@@ -34,26 +35,54 @@ module.exports = (app) => {
     });
 
     //delete user bookmark
-    app.delete('/api/bookmark/delete/:id', requireAuth, function(req, res){
+    app.delete('/api/bookmark/delete', requireAuth, function(req, res){
         const id = req.body.id;
         
-        Bookmark.deleteOne({_id: id}, function(err){
+        Bookmark.findByIdAndRemove(id, function(err){
             if(err) return res.status(422).send(err);
             res.sendStatus(200);
         })
     });
 
     //update user bookmark
-    app.post('/api/bookmark/update:id', requireAuth, function(req, res){
+    app.put('/api/bookmark/update', requireAuth, function(req, res){
         const id = req.body.id;
         const bookurl = req.body.bookurl;
         const description = req.body.description;
-
+        
         Bookmark.findByIdAndUpdate(id, 
-            {$set: {bookurl: bookurl, description: description}}, function(err){
+            {$set: {bookurl: bookurl, description: description, saveDate: createDate()}}, function(err){
                 if(err) return res.status(422).send(err);
                 res.sendStatus(200);                
             });
     });
 
 };
+
+function createDate(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        var hour = today.getHours();
+        var minutes = today.getMinutes();
+        if(dd<10) {
+            dd = '0'+dd
+        } 
+
+        if(mm<10) {
+            mm = '0'+mm
+        } 
+
+        if(hour<10) {
+            hour = '0'+hour
+        } 
+
+        if(minutes<10) {
+            minutes = '0'+minutes
+        } 
+        
+
+        today = mm + '/' + dd + '/' + yyyy +',' + hour +':' + minutes;
+        return today;
+}

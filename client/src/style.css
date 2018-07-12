@@ -31,4 +31,9 @@
     color: black;
     border-bottom-color: black;
   } */
+
+  html
+{
+    font-size: 100%;
+}
   
