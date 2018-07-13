@@ -2,14 +2,15 @@ import axios from 'axios';
 import { AUTH_USER, AUTH_ERROR, FETCH_CONTENT, CONTENT_ERROR, FETCH_BOOKMARK, DELETE_BOOKMARK, ADD_BOOKMARK, UPDATE_BOOKMARK, AUTH_SETTING } from './types';
 
 // auth actions
-export const fetchuser = () => dispatch => {
+export const fetchuser = () => {
+    return { type: AUTH_USER, payload: localStorage.getItem('token')}
+}
+
+export const fetchusersetting = () => dispatch => {
     axios.get('/api/current_user', { headers: {'authorization': localStorage.getItem('token')} })
     .then(function(res){
-        dispatch( { type: AUTH_USER, payload: res.data, local: localStorage.getItem('token') });
+        dispatch( { type: AUTH_SETTING, payload: res.data });
     })
-    .catch(function (error) {
-        dispatch( { type: AUTH_ERROR, payload: error.response.data.error });
-    });
 }
 
 export const signup = (formProps, callback) =>  dispatch => {

@@ -13,6 +13,7 @@ import Content from './Content';
 class App extends Component {
     componentDidMount(){
         this.props.fetchuser();
+        this.props.fetchusersetting();
     }
 
     render(){

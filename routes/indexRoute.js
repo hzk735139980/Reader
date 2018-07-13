@@ -40,7 +40,7 @@ module.exports = app => {
                 }else{
                     next = 'undefiened';
                 }
-                return res.send({ bookname, content, prev, next });
+                return res.send({ bookname, content, prev, next, myURL });
             }
             if(myURL.origin.toString().includes(uu) && uutest.test(myURL.pathname.toString())){
                 var html = iconv.decode(body, 'gbk');
@@ -59,7 +59,7 @@ module.exports = app => {
                 }else{
                     next = 'undefined';
                 }
-                return res.send({ bookname, content, prev, next });                
+                return res.send({ bookname, content, prev, next, myURL });                
             }
             if(myURL.origin.toString().includes(situ) && situtest.test(myURL.pathname.toString())){
                 $ = cheerio.load(body);
@@ -77,7 +77,7 @@ module.exports = app => {
                 }else{
                     next = 'undefined';
                 }
-                return res.send({ bookname, content, prev, next });
+                return res.send({ bookname, content, prev, next, myURL });
             }else{
                 res.status(422).send({ error: 'Sorry, cannnot process this url' });
             }

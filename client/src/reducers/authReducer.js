@@ -10,8 +10,7 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action){
     switch(action.type){
         case AUTH_USER:
-            return { ...state, bgcolor: action.payload.bgcolor,
-                fontsize: action.payload.fontsize, authenticated: action.local };
+            return { ...state, authenticated: action.payload };
         case AUTH_SETTING: 
             return { ...state, bgcolor: action.payload.bgcolor,
                 fontsize: action.payload.fontsize };

@@ -5,7 +5,7 @@ export default function(state = [], action){
         case FETCH_BOOKMARK:
             return action.payload;
         case ADD_BOOKMARK:
-            return action.payload;
+            return state;
         case UPDATE_BOOKMARK:
             return state;
         case DELETE_BOOKMARK:

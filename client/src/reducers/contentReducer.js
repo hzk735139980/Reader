@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     content: '',
     prev: '',
     next: '',
+    url: '',
     error: ''
 };
 
@@ -15,6 +16,7 @@ export default function(state = INITIAL_STATE, action){
                      content: action.payload.content,
                      prev: action.payload.prev,
                      next: action.payload.next,
+                     url: action.payload.myURL,
                      error: ''  };
         case CONTENT_ERROR:
             return { ...state, error: action.payload };

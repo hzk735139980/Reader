@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import * as actions from '../actions';
+import Bookmark from './Bookmark';
 
 const color = [ {黄橙: "#fef0e1"}, { 洋红: "#feeaee"}, { 淡粉: "#fdecfd"}, {水蓝: "#e9f4fc"}, { 草绿: "#f3fdec"}];
 const font = [ {小: "14px"}, {中: "16px"}, {大: "20px"}, {特大: "24px"}];
@@ -22,6 +23,7 @@ class Content extends Component {
     componentDidUpdate(){
         this.shouldNavigateAway();
         window.scrollTo(0, 0);
+
     }
 
     shouldNavigateAway(){
@@ -56,7 +58,6 @@ class Content extends Component {
     }
     
     updateSettingHander(bgcolor, fontsize){
-        // console.log({bgcolor, fontsize});
         this.props.updatesetting({bgcolor, fontsize}, ()=>{
             document.body.style.backgroundColor = bgcolor;
             this.props.fetchuser();
@@ -66,36 +67,30 @@ class Content extends Component {
 
     renderColorMenu(){
         return color.map((colorName, i)=>{
-            return <MenuItem eventKey={i} key={i} onClick={()=>this.updateSettingHander(Object.values(colorName), this.props.fontsize)}>{Object.keys(colorName)}</MenuItem>
+            return <DropdownItem key={i} onClick={()=>this.updateSettingHander(Object.values(colorName), this.props.fontsize)}>{Object.keys(colorName)}</DropdownItem>
         })
     }
 
     renderFontMenu(){
         return font.map((fontName, i)=>{
-            return <MenuItem eventKey={i} key={i} onClick={()=>this.updateSettingHander(this.props.bgcolor, Object.values(fontName))}>{Object.keys(fontName)}</MenuItem>
+            return <DropdownItem key={i} onClick={()=>this.updateSettingHander(this.props.bgcolor, Object.values(fontName))}>{Object.keys(fontName)}</DropdownItem>
         })
     }
+
     render(){
         return(
             <div className="container p-5">
+                <Bookmark />
                 <h3 className="text-center font-weight-bold">{this.props.bookname}</h3>
-                <div className="d-flex justify-content-around alert alert-dark">
-                    <DropdownButton
-                        title= '背景颜色'
-                        noCaret
-                        id='dropdown-size-small'
-                        className="alert-dark border-0"
-                        >
-                        {this.renderColorMenu()}
-                    </DropdownButton>
-                    <DropdownButton
-                        title= '字体大小'
-                        noCaret
-                        id='dropdown-size-small'
-                        className="alert-dark border-0"
-                        >
-                        {this.renderFontMenu()}
-                    </DropdownButton>
+                <div className="d-flex justify-content-around alert" style={{backgroundColor: '#e8e8e8'}}>
+                    <UncontrolledDropdown>    
+                        <DropdownToggle caret color="black" className="border-0" style={{backgroundColor: '#e8e8e8'}}>背景颜色</DropdownToggle>
+                        <DropdownMenu>{this.renderColorMenu()}</DropdownMenu>
+                    </UncontrolledDropdown>
+                    <UncontrolledDropdown>
+                        <DropdownToggle caret color="black" className="border-0" style={{backgroundColor: '#e8e8e8'}}>字体大小</DropdownToggle>
+                        <DropdownMenu>{this.renderFontMenu()}</DropdownMenu>
+                    </UncontrolledDropdown>
                 </div>
                 <div style={{fontSize: this.props.fontsize}} dangerouslySetInnerHTML={{ __html: this.props.content }} />
                 {this.renderLink()}
